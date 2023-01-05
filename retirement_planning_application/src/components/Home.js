@@ -4,8 +4,11 @@ import Button from 'react-bootstrap/Button'
 import Sign_img from './Sign_img'
 import Header from './Header'
 import {NavLink} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+  const history = useNavigate();
+
     const[inpval,setInputval] = useState({
         name:"",
         email:"",
@@ -44,6 +47,7 @@ const Home = () => {
         }else{
             console.log("Data added sucessfully");
             localStorage.setItem("useryoutube",JSON.stringify([...data,inpval]));
+            history("/login")
         }
     }
   return (
