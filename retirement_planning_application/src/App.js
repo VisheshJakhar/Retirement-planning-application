@@ -6,7 +6,7 @@ import Login from './components/Login';
 import Summary from './components/Summary';
 import Errror from './components/Errror';
 import {Routes, Route} from "react-router-dom"
-import Survey from './components/Survey';
+import Survey2 from './components/Survey2';
 import Report from './components/Report';
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/summary' element={<Summary/>}/>
-      <Route path='/survey' element={<Survey/>}/>
-      <Route path='/report' element={<Report/>}/>
+      <Route path='/survey' element={<Survey2/>}/>
+      {/* <Route path='/report' element={<Report/>}/> */}
       <Route path='*' element={<Errror />} />
     </Routes> 
     </>

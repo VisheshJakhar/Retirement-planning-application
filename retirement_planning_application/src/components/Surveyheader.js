@@ -8,7 +8,7 @@ const Summaryheader = () => {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home" style={{paddingLeft:'34rem'}}>Survey Page</Navbar.Brand>
+          <Navbar.Brand href="#home" style={{paddingLeft:'34rem'}}>Retirement Calculator</Navbar.Brand>
           <Nav className="me-auto">
           </Nav>
         </Container>
