@@ -2,7 +2,19 @@ import React, {useState, useEffect} from "react";
 import Surveyheader from './Surveyheader'
 import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import axios from 'axios'
+
 const Survey2 = () => {
+
+   const[post, setPosts] = useState([])
+    const[count, setCount] = useState(1)
+    
+       const handleClick = () => {
+            setInterval(() => {
+            setCount(count+1)
+          }, 10000);
+       }
+
   const [logindata, setLoginData] = useState([]);
 
   const history = useNavigate();
@@ -21,8 +33,16 @@ const Survey2 = () => {
   }
 
   useEffect(() => {
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=0b5415eb9bf023d556ef265b425e0e4a&language=en-US&page=${count}`)
+        .then(res=>{
+            console.log(res)
+            setPosts(res.data.results[parseInt(0)])
+        })
+        .catch(err=>{
+            console.log(err)
+        })
     Name();
-}, [])
+}, [count])
 
     const initialRetirementAge = Number(localStorage.getItem("retirementAge") || 100);
     const initialTargeRetAmt = Number(localStorage.getItem("targetRetAmt") || 0);
@@ -92,8 +112,13 @@ const Survey2 = () => {
         <>
          <div style={{display:"flex",justifyContent:"right",marginRight:"3rem",marginTop:"0.75rem"}}><Button onClick={userlogout}>LogOut</Button></div>
       <div className="App">
+      <button style={{display:"none"}} type="button" onClick={handleClick()}></button>
       <div className='img' style={{position:"relative"}}>
-        <img src="https://softauthor.com/wp-content/uploads/2021/08/CSS-Background-Image-Full-Screent-With-background-Image-1024x903.png"></img>
+      <img
+                src={`https://image.tmdb.org/t/p/original${post.backdrop_path}`}
+                alt="..."
+                style={{ height: "100vh", width: "100vw" }}
+              />
       </div>
       <div style={{position:"absolute"}}>
       <h1 className='color'>Retirement Calculator</h1>
